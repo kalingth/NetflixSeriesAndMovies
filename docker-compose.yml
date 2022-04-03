@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./databases/MySQL:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: r00t
+      MYSQL_USER: kalingth
+      MYSQL_PASSWORD: changeme
+      MYSQL_DATABASE: netflix
+  
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./databases/PostgreSQL:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: kalingth
+      POSTGRES_PASSWORD: changeme
